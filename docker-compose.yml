@@ -1,0 +1,20 @@
+version: "3.3"
+services:
+  program:
+    build: .
+    environment:
+      - x="y"
+    volumes:
+      - .:/code
+    depends_on:
+      - redis
+      - postgres  
+  redis:
+    image: "redis:alpine"
+    volumes:
+      - /data/redis
+
+  postgres:
+    image: "postgres:alpine"
+    volumes:
+      - /data/postgres
